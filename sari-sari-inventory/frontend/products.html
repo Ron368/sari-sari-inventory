@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Products - Sari-Sari Store</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/phosphor-icons@1.4.0"></script>
+</head>
+<body>
+  <header>
+    <nav class="sidebar">
+      <h2 class="store-name">NENENG B<br>SARI SARI<br>STORE</h2>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="ph ph-house"></i>Home</a></li>
+        <li><a href="products.html" class="active"><i class="ph ph-package"></i>Products</a></li>
+        <li><a href="sales.html"><i class="ph ph-receipt"></i>Sales</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="product-page">
+    <section class="product-content">
+      <section class="page-header">
+        <h1>Products</h1>
+        <div class="actions">
+          <div class="search-box">
+            <i class="ph ph-magnifying-glass"></i>
+            <input type="text" placeholder="Search...">
+          </div>
+          <button class="add-item"><i class="ph ph-plus"></i> Add Item</button>
+        </div>
+      </section>
+      <section class="product-table">
+        <table>
+          <thead>
+            <tr>
+              <th><input type="checkbox" aria-label="select all"></th>
+              <th>No ID</th>
+              <th>Product</th>
+              <th>SKU</th>
+              <th>Location</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td>1741D</td>
+              <td class="product-cell"
+                  data-id="1741D"
+                  data-name="Piatto's Cheese"
+                  data-stock="1108"
+                  data-location="Warehouse 1"
+                  data-price="₱16"
+                  data-status="Ready Stock"
+                  data-image="assets/Piattos-Cheese.webp">
+                <img src="assets/Piattos-Cheese.webp" alt="Piatto's Cheese">
+                <span>Piatto's Cheese</span>
+              </td>
+              <td>12569756</td>
+              <td>Warehouse 1</td>
+              <td>₱16</td>
+              <td>1108</td>
+              <td class="actions">
+                <i class="ph ph-pencil"></i>
+                <i class="ph ph-trash"></i>
+                <i class="ph ph-dots-three-outline"></i>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td>1741E</td>
+              <td class="product-cell"
+                  data-id="1741E"
+                  data-name="Nova Cheddar"
+                  data-stock="950"
+                  data-location="Warehouse 2"
+                  data-price="₱18"
+                  data-status="Low Stock"
+                  data-image="assets/Nova-Cheddar.webp">
+                <img src="assets/Nova-Cheddar.webp" alt="Nova Cheddar">
+                <span>Nova Cheddar</span>
+              </td>
+              <td>12569757</td>
+              <td>Warehouse 2</td>
+              <td>₱18</td>
+              <td>950</td>
+              <td class="actions">
+                <i class="ph ph-pencil"></i>
+                <i class="ph ph-trash"></i>
+                <i class="ph ph-dots-three-outline"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="pagination">
+        <div class="pagination-info">Showing <strong>1-10</strong> of <strong>50</strong> products</div>
+        <div class="pagination-buttons">
+          <button class="page-btn" disabled><i class="ph ph-caret-left"></i></button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn"><i class="ph ph-caret-right"></i></button>
+        </div>
+      </section>
+    </section>
+    <aside class="product-preview" id="productPreview" aria-hidden="true">
+      <button id="closePreview" aria-label="Close preview"><i class="ph ph-x"></i></button>
+      <h2>Preview Product</h2>
+      <img id="previewImage" src="" alt="Preview image">
+      <div class="product-details">
+        <p id="previewID"></p>
+        <p id="previewStock"></p>
+        <p id="previewPrice"></p>
+        <p id="previewStatus"></p>
+      </div>
+    </aside>
+  </main>
+  <script>
+    // find clickable product cells
+    const productCells = document.querySelectorAll('.product-cell');
+    const previewPanel = document.getElementById('productPreview');
+    const closeBtn = document.getElementById('closePreview');
+    const previewImage = document.getElementById('previewImage');
+    const previewID = document.getElementById('previewID');
+    const previewStock = document.getElementById('previewStock');
+    const previewPrice = document.getElementById('previewPrice');
+    const previewStatus = document.getElementById('previewStatus');
+
+    // populate panel and open it
+    function openPreviewFromCell(cell) {
+      const id = cell.dataset.id || '';
+      const name = cell.dataset.name || '';
+      const stock = cell.dataset.stock || '';
+      const location = cell.dataset.location || '';
+      const price = cell.dataset.price || '';
+      const status = cell.dataset.status || '';
+      const image = cell.dataset.image || '';
+
+      // hide image until loaded
+      previewImage.style.display = 'none';
+      previewImage.src = ''; 
+
+      // fill texts
+      previewID.textContent = `${id} - ${name}`;
+      previewStock.textContent = `Stock : ${stock} - ${location}`;
+      previewPrice.textContent = `Price : ${price}`;
+      previewStatus.textContent = `Status : ${status}`;
+
+      // load image and show when ready
+      if (image) {
+        previewImage.src = image;
+        previewImage.onload = () => {
+          previewImage.style.display = 'block';
+        };
+        previewImage.onerror = () => {
+          previewImage.style.display = 'none';
+        };
+      } else {
+        previewImage.style.display = 'none';
+      }
+
+      document.body.classList.add('preview-open');
+      previewPanel.setAttribute('aria-hidden', 'false');
+    }
+
+    // close preview
+    function closePreview() {
+      document.body.classList.remove('preview-open');
+      previewPanel.setAttribute('aria-hidden', 'true');
+    }
+
+    // wire events
+    productCells.forEach(cell => {
+      cell.addEventListener('click', () => openPreviewFromCell(cell));
+    });
+
+    closeBtn.addEventListener('click', closePreview);
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closePreview();
+    });
+
+    // click outside preview closes it
+    window.addEventListener('click', (e) => {
+      if (!document.body.classList.contains('preview-open')) return;
+      const clickedInside = previewPanel.contains(e.target);
+      const clickedOnProduct = e.target.closest('.product-cell');
+      if (!clickedInside && !clickedOnProduct) closePreview();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sales - Sari-Sari Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/phosphor-icons@1.4.0"></script>
+</head>
+<body>
+  <header>
+    <nav class="sidebar">
+      <h2 class="store-name">NENENG B<br>SARI SARI<br>STORE</h2>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="ph ph-house"></i>Home</a></li>
+        <li><a href="products.html"><i class="ph ph-package"></i>Products</a></li>
+        <li><a href="#" class="active"><i class="ph ph-receipt"></i>Sales</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="dashboard">
+      <section class="sales-header">
+        <h1>Sales Overview</h1>
+        <button class="record-btn">
+          <i class="ph ph-plus-circle"></i> Record New Sale
+        </button>
+      </section>
+      <section class="stats">
+        <article class="stat-card money">
+          <h3>Total Sales Today</h3>
+          <p class="value">₱522</p>
+          <p class="sub">+8.7% from last month</p>
+          <i class="ph ph-currency-dollar"></i>
+        </article>
+        <article class="stat-card green">
+          <h3>Items Sold Today</h3>
+          <p class="value">19</p>
+          <p class="sub">+19 from last month</p>
+          <i class="ph ph-package"></i>
+        </article>
+        <article class="stat-card brown">
+          <h3>Total Transactions</h3>
+          <p class="value">5</p>
+          <p class="sub">+5 Transactions</p>
+          <i class="ph ph-clipboard-text"></i>
+        </article>
+      </section>
+      <section class="sales-table-section">
+        <h2>Sales Transactions</h2>
+        <p>Complete History of Sales</p>
+        <div class="sales-table-container">
+          <table class="sales-table">
+            <thead>
+              <tr>
+                <th>Sales ID</th>
+                <th>Date</th>
+                <th>Product Name</th>
+                <th>Quantity Sold</th>
+                <th>Unit Price</th>
+                <th>Total Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>001</td>
+                <td>2025-10-12</td>
+                <td>Lucky Me! Pancit Canton 80g</td>
+                <td>3</td>
+                <td>₱14</td>
+                <td>₱42</td>
+              </tr>
+              <tr>
+                <td>002</td>
+                <td>2025-10-12</td>
+                <td>Coke 1L</td>
+                <td>2</td>
+                <td>₱50</td>
+                <td>₱100</td>
+              </tr>
+              <tr>
+                <td>003</td>
+                <td>2025-10-12</td>
+                <td>Piatto’s Cheese</td>
+                <td>8</td>
+                <td>₱16</td>
+                <td>₱128</td>
+              </tr>
+              <tr>
+                <td>004</td>
+                <td>2025-10-12</td>
+                <td>Century Tuna Flakes 155g</td>
+                <td>4</td>
+                <td>₱35</td>
+                <td>₱140</td>
+              </tr>
+              <tr>
+                <td>005</td>
+                <td>2025-10-12</td>
+                <td>Good Luck Rice 1kg</td>
+                <td>2</td>
+                <td>₱48</td>
+                <td>₱96</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Neneng B Sari-Sari Store Inventory System</p>
+  </footer>
+</body>
+</html>
